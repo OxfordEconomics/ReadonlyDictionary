@@ -197,6 +197,26 @@
             }
         }
 
+        public Stream GetAdditionalDataStream(string name)
+        {
+            lock (this.mutex)
+            {
+                if (!this.customBlockIndex.ContainsKey(name))
+                {
+                    return null;
+                }
+
+                var block = this.customBlockIndex[name];
+
+                var blockBytes = this.reader.ReadArray(block.Position, block.Length);
+
+                MemoryStream input = new MemoryStream(blockBytes, false);
+                DeflateStream deflateStream = new DeflateStream(input, CompressionMode.Decompress);
+
+                return deflateStream;
+            }
+        }
+
         private T2 UnzipAndDeserialize<T2>(string name, JsonSerializerSettings settings, bool unzip)
         {
             var json = this.GetAdditionalDataJson(name, unzip);

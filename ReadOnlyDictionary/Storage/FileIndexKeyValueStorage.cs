@@ -222,9 +222,9 @@
                 var blockBytes = this.reader.ReadArray(block.Position, block.Length);
 
                 MemoryStream input = new MemoryStream(blockBytes, false);
-                DeflateStream gzip = new DeflateStream(input, CompressionMode.Decompress);
+                DeflateStream deflateStream = new DeflateStream(input, CompressionMode.Decompress);
 
-                return gzip;
+                return deflateStream;
             }
         }
 

@@ -67,7 +67,8 @@
             FileInfo fi,
             IRandomAccessStore reader,
             ISerializer<TValue> serializer = null,
-            IIndexSerializer<TKey> indexSerializer = null)
+            IIndexSerializer<TKey> indexSerializer = null,
+            CompressionMethod compression = CompressionMethod.NEWTONSOFT)
         {
             indexSerializer = indexSerializer ?? new DictionaryIndexSerializer<TKey>();
             this.reader = reader;

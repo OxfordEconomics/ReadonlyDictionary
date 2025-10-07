@@ -30,4 +30,6 @@ deploy:
   api_key:
     secure: Z1DoV4FAaop88LOqNhOuUf+SUrJtH2toXU5Kx++tXpJLAYWluu4ppfdbF+SUT+7+
   on:
-    branch: master
+    branch: 
+      - master
+      - /releases\/.*/

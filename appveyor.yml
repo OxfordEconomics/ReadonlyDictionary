@@ -1,9 +1,6 @@
 version: 1.2.{build}
 image: Visual Studio 2019
 configuration: Release
-environment:
-  COVERALLS_REPO_TOKEN:
-    secure: fi6bOacZqdXXRAE679Iu7mXAvdr8owltFkXYajL6TonDcYhL6mXitW2gyMkW8UDf
 nuget:
   project_feed: true
 before_build:
@@ -27,9 +24,5 @@ deploy:
 - provider: NuGet
   skip_symbols: false
   artifact: /.*\.nupkg/
-  api_key:
-    secure: Z1DoV4FAaop88LOqNhOuUf+SUrJtH2toXU5Kx++tXpJLAYWluu4ppfdbF+SUT+7+
   on:
-    branch: 
-      - master
-      - /releases\/.*/
+    branch: main
